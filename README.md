@@ -134,6 +134,23 @@ automation:
 # 巡检故障告警：state sensor.<判级> to "FAULT-stuck"（FAULT 开头可用模板匹配）
 ```
 
+## 数值实体写入语义（重要）
+
+自 0.2.2 起，5 个数值传感器（在线玩家 / TPS / MSPT / 内存 / CPU）开启了
+`force_update`：**每次轮询（默认 30 秒）都会写一条 recorder 历史点，值不变也写**，
+以保证折线图历史稠密（慢变实体不再被画成跨窗口斜线）。由此有两个副作用，写自动化时务必避开：
+
+1. **这 5 个实体的 `last_changed` 每次轮询都会刷新**。
+   `condition: state ... for:`（state 条件 + for）在这 5 个实体上永远不成立；
+   用 `last_changed` / `relative_time` 计算"保持某值多久"的模板也会失真。
+2. **不要用不带 `from`/`to` 的裸 `state` 触发器**指向这 5 个实体——值不变也会触发，
+   自动化会每 30 秒执行一次（配了 `for:` 时到点后还会周期重复）。
+
+正确写法：state 触发器带 `to:` / `from:`（如上方离线告警示例），或使用 `numeric_state`
+触发器（如上方玩家/卡顿示例）。二进制传感器（服务器在线）、运行时长、巡检判级三个
+实体**未开启** force_update，其 `last_changed` 语义不变，可正常用 `for:` 判断持续时长。
+
+
 ## ★ Mac App 编译逻辑（macapp/）★
 
 无需 Xcode，无需第三方依赖，一个脚本构建标准 .app 包：

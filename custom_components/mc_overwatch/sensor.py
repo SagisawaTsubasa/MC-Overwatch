@@ -50,6 +50,10 @@ class PlayersSensor(McServerEntity, SensorEntity):
 
     _attr_translation_key = "players"
     _attr_native_unit_of_measurement = "人"
+    # 数值遥测：每轮轮询都写 recorder（值不变也记），保证折线图历史点稠密、
+    # 避免慢变实体（如在线人数）被画成跨窗口斜线。二进制/运行时长/判级实体不开启，
+    # 保护其 last_changed 语义（condition for:/持续时长计算依赖它）。
+    _attr_force_update = True
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_icon = "mdi:account-multiple"
 
@@ -76,6 +80,10 @@ class TpsSensor(McServerEntity, SensorEntity):
 
     _attr_translation_key = "tps"
     _attr_native_unit_of_measurement = "TPS"
+    # 数值遥测：每轮轮询都写 recorder（值不变也记），保证折线图历史点稠密、
+    # 避免慢变实体（如在线人数）被画成跨窗口斜线。二进制/运行时长/判级实体不开启，
+    # 保护其 last_changed 语义（condition for:/持续时长计算依赖它）。
+    _attr_force_update = True
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_icon = "mdi:speedometer"
 
@@ -111,6 +119,10 @@ class MsptSensor(McServerEntity, SensorEntity):
 
     _attr_translation_key = "mspt"
     _attr_native_unit_of_measurement = "ms"
+    # 数值遥测：每轮轮询都写 recorder（值不变也记），保证折线图历史点稠密、
+    # 避免慢变实体（如在线人数）被画成跨窗口斜线。二进制/运行时长/判级实体不开启，
+    # 保护其 last_changed 语义（condition for:/持续时长计算依赖它）。
+    _attr_force_update = True
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_icon = "mdi:timer-outline"
 
@@ -136,6 +148,10 @@ class MemorySensor(McServerEntity, SensorEntity):
     _attr_translation_key = "memory"
     _attr_device_class = SensorDeviceClass.DATA_SIZE
     _attr_native_unit_of_measurement = "GB"
+    # 数值遥测：每轮轮询都写 recorder（值不变也记），保证折线图历史点稠密、
+    # 避免慢变实体（如在线人数）被画成跨窗口斜线。二进制/运行时长/判级实体不开启，
+    # 保护其 last_changed 语义（condition for:/持续时长计算依赖它）。
+    _attr_force_update = True
     _attr_state_class = SensorStateClass.MEASUREMENT
 
     def _value(self):
@@ -156,6 +172,10 @@ class CpuSensor(McServerEntity, SensorEntity):
 
     _attr_translation_key = "cpu"
     _attr_native_unit_of_measurement = "%"
+    # 数值遥测：每轮轮询都写 recorder（值不变也记），保证折线图历史点稠密、
+    # 避免慢变实体（如在线人数）被画成跨窗口斜线。二进制/运行时长/判级实体不开启，
+    # 保护其 last_changed 语义（condition for:/持续时长计算依赖它）。
+    _attr_force_update = True
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_icon = "mdi:cpu-64-bit"
 
