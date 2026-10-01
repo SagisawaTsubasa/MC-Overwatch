@@ -1,0 +1,3 @@
+# 跨平台仓库（Windows 开发 + macOS 运行），全部文本统一 LF，
+# 否则 build-app.sh 等脚本被 autocrlf 转成 CRLF 后在 Mac 上跑不起来。
+* text=auto eol=lf

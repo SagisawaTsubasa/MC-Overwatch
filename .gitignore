@@ -1,0 +1,12 @@
+# 运行时产物与本地配置（绝不上传：内含 RCON 密码与 token）
+macapp/dist/
+config.json
+last_check.json
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store

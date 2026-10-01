@@ -1,0 +1,66 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MC Overwatch",
+        "description": "Connect to the mc-ha-exporter running on the Mac. Install it first by launching mc-ha-exporter.app (the host address is shown in its status panel; use the 'Copy HA config' button to grab everything).",
+        "data": {
+          "host": "Host (the Mac's LAN IP; a http://ip:port/ paste works too)",
+          "port": "Port",
+          "token": "Access token (use the 'Copy HA config' button in the app panel)",
+          "scan_interval": "Refresh interval (seconds)"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure MC server",
+        "description": "Change host/port/token; entities and history are kept.",
+        "data": {
+          "host": "Host (the Mac's LAN IP; a http://ip:port/ paste works too)",
+          "port": "Port",
+          "token": "Access token"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate MC server",
+        "description": "The token was rejected by the exporter (403). Paste a fresh token.",
+        "data": {
+          "token": "Access token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the exporter. Check host/port, and that the macOS firewall allows inbound python3.",
+      "invalid_auth": "Wrong token (403). Use the 'Copy HA config' button in the app panel to copy it again.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This exporter is already configured.",
+      "reauth_successful": "Re-authentication successful.",
+      "reconfigure_successful": "Reconfiguration successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "MC Overwatch options",
+        "data": {
+          "scan_interval": "Refresh interval (seconds, min 5)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {"name": "Server online"}
+    },
+    "sensor": {
+      "players": {"name": "Players online"},
+      "tps": {"name": "TPS (5 min)"},
+      "mspt": {"name": "Tick time"},
+      "memory": {"name": "JVM memory"},
+      "cpu": {"name": "CPU usage"},
+      "uptime": {"name": "Uptime"},
+      "verdict": {"name": "Health verdict"}
+    }
+  }
+}
