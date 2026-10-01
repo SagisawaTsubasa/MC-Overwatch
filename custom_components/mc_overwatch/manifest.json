@@ -1,9 +1,9 @@
 {
   "domain": "mc_overwatch",
   "name": "MC Overwatch",
-  "codeowners": ["@luzeyi"],
+  "codeowners": ["@SagisawaTsubasa"],
   "config_flow": true,
-  "documentation": "https://github.com/luzeyi/MC-Overwatch",
+  "documentation": "https://github.com/SagisawaTsubasa/MC-Overwatch",
   "integration_type": "hub",
   "iot_class": "local_polling",
   "requirements": [],
