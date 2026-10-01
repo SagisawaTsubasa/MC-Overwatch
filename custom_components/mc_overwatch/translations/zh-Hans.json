@@ -1,0 +1,66 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MC 服务器",
+        "description": "连接 Mac 上的 mc-ha-exporter。请先在 Mac 上双击 mc-ha-exporter.app 完成安装（状态面板里有主机地址，可用「复制 HA 配置」按钮拿全部信息）。",
+        "data": {
+          "host": "主机地址（Mac 的内网 IP，可直接粘贴 http://ip:port/ 形式）",
+          "port": "端口",
+          "token": "访问令牌（在 App 面板点「复制 HA 配置」获取）",
+          "scan_interval": "刷新间隔（秒）"
+        }
+      },
+      "reconfigure": {
+        "title": "重新配置MC 服务器",
+        "description": "修改主机/端口/令牌，实体与历史会保留。",
+        "data": {
+          "host": "主机地址（Mac 的内网 IP，可直接粘贴 http://ip:port/ 形式）",
+          "port": "端口",
+          "token": "访问令牌"
+        }
+      },
+      "reauth_confirm": {
+        "title": "重新认证MC 服务器",
+        "description": "令牌被导出器拒绝（403），请重新粘贴令牌。",
+        "data": {
+          "token": "访问令牌"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法连接导出器。请检查主机/端口，以及 macOS 防火墙是否放行了 python3 入站。",
+      "invalid_auth": "令牌错误（403）。请用 App 面板的「复制 HA 配置」重新复制。",
+      "unknown": "意外错误。"
+    },
+    "abort": {
+      "already_configured": "这台导出器已经配置过了。",
+      "reauth_successful": "重新认证成功。",
+      "reconfigure_successful": "重新配置成功。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "MC 服务器选项",
+        "data": {
+          "scan_interval": "刷新间隔（秒，最小 5）"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {"name": "服务器在线"}
+    },
+    "sensor": {
+      "players": {"name": "在线玩家"},
+      "tps": {"name": "TPS（5分钟）"},
+      "mspt": {"name": "Tick 耗时"},
+      "memory": {"name": "JVM 内存"},
+      "cpu": {"name": "CPU 占用"},
+      "uptime": {"name": "运行时长"},
+      "verdict": {"name": "巡检判级"}
+    }
+  }
+}
