@@ -10,3 +10,9 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# ---- 2026-10-09 仓库整理：测试源码移 project-tests ----
+tests/
+/pyproject.toml
+/requirements-dev.txt
+/mc-ha-integration-plan.md
