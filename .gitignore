@@ -16,3 +16,7 @@ tests/
 /pyproject.toml
 /requirements-dev.txt
 /mc-ha-integration-plan.md
+
+.zcode/
+审查报告-*.md
+审计报告-*.md
